@@ -1,0 +1,39 @@
+{
+  "project": {
+    "name": "Symfony Console Getting Started",
+    "language": "php",
+    "framework": "symfony-console",
+    "packageManager": "composer"
+  },
+  "tools": {
+    "test": {
+      "command": "composer run-script test",
+      "description": "Run test suite",
+      "enabled": false
+    },
+    "lint": {
+      "command": "composer run-script lint",
+      "description": "Run code linter",
+      "enabled": false
+    },
+    "format": {
+      "command": "composer run-script format",
+      "description": "Format code",
+      "enabled": false
+    },
+    "install": {
+      "command": "composer install",
+      "description": "Install dependencies"
+    }
+  },
+  "searchPatterns": {
+    "commands": ["src/**/*Command.php"],
+    "tests": ["tests/**/*.php"],
+    "config": ["config/**/*", "src/config/**/*"]
+  },
+  "documentation": {
+    "agents": "AGENTS.md",
+    "guidelines": ".copilot.md",
+    "readme": "README.md"
+  }
+}
