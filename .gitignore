@@ -22,6 +22,7 @@ composer.lock
 .cache/
 tmp/
 temp/
+.phpunit.result.cache
 
 # OS files
 Thumbs.db
