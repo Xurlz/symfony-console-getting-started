@@ -1,4 +1,9 @@
 {
+    "autoload": {
+        "psr-4": {
+            "Charles\\Command\\" : "src/Commands/"
+        }
+    },
     "require": {
         "symfony/console": "^6.4"
     },

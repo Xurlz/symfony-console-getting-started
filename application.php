@@ -3,17 +3,17 @@
 
 require __DIR__.'/vendor/autoload.php';
 
-use Symfony\Component\Console\SingleCommandApplication;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputInterface;
+use Charles\Command\TeapotCommand;
+use Symfony\Component\Console\Application;
 
+$application = new Application;
 
-/* $application->addCommand(new TeapotCommand); */
-(new SingleCommandApplication)
-  ->setCode( function (InputInterface $input, OutputInterface $output) : int {
-    $output->writeln("🫖 I'm a teapot");
-    return Command::FAILURE;
-  })
-  ->run();
+$teapotCommand = new TeapotCommand;
+
+$application->addCommands([$teapotCommand]);
+
+$application->setDefaultCommand($teapotCommand->getName(),true);
+
+$application->run();
+
 
