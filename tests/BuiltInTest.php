@@ -2,16 +2,27 @@
 
 namespace Charles\Tests;
 
+use Charles\Command\TeapotCommand;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Console\Tester\CommandTester;
 
-class BuiltInTest extends \PHPUnit\Framework\TestCase {
-  use \phpmock\phpunit\PHPMock;
+class BuiltInTest extends TestCase {
+
+  private CommandTester $tester;
+
+  protected function setUp() : void
+  {
+    $command = new TeapotCommand;
+    $this->tester = new CommandTester($command);
+  }
 
   public function testExec() : void
   {
-    exec("./application.php", $output, $return_var);
+    $statusCode = $this->tester->execute([]);
+    $output = $this->tester->getDisplay();
 
-    $this->assertEquals(["🫖 I'm a teapot"], $output);
-    $this->assertEquals(1, $return_var);
+    $this->assertEquals("🫖 I'm a teapot\n", $output);
+    $this->assertEquals(1, $statusCode);
 
   }
 }
