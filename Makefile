@@ -1,8 +1,12 @@
-test: vendor
-	composer -- exec phpunit tests/
-vendor:
-	composer install
-clean:
-	rm -rf vendor/
+test: up
+	docker compose exec app composer -- exec phpunit tests/
+build:
+	docker compose build
+	touch build
+up: build
+	docker compose up -d
+down:
+	docker compose down
+	rm build
 
-.PHONY: test clean
+.PHONY: up down test
